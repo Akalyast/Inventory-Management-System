@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      margin: 10px;
+    }
+    .card h2 {
+      color: #007bff;
+      margin: 10px 0;
+    }
+    .low-stock {
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .low-stock table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #dc3545;
+      color: white;
+    }
+    #chartContainer {
+      margin-top: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    /* 🌐 NAVBAR STYLE */
+.navbar {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.navbar .logo {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li {
+  display: inline;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: #0056b3;
+}
+
+.navbar ul li a.active {
+  background-color: #0056b3;
+}
+
+/* Divider after navbar */
+.nav-divider {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 0;
+}
+
+  </style>
+</head>
+<body>
+  <!-- 🌐 NAVIGATION BAR -->
+<nav class="navbar">
+  <div class="logo">📦 Inventory System</div>
+  <ul>
+    <li><a href="index.html">Dashboard</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="stock.html">Stock</a></li>
+    <li><a href="sales.html">Sales</a></li>
+    <li><a href="#" onclick="logout()">Logout</a></li>
+
+  </ul>
+</nav>
+
+<hr class="nav-divider" />
+
+  <h1>📊 Inventory Dashboard</h1>
+
+  <div class="cards">
+    <div class="card">
+      <h2 id="totalProducts">0</h2>
+      <p>Total Products</p>
+    </div>
+    <div class="card">
+      <h2 id="totalStock">0</h2>
+      <p>Total Stock Quantity</p>
+    </div>
+    <div class="card">
+      <h2 id="totalSales">0</h2>
+      <p>Total Sales</p>
+    </div>
+  </div>
+
+  <div class="low-stock">
+    <h3>⚠️ Low Stock Products (Below 10)</h3>
+    <table id="lowStockTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div id="chartContainer">
+    <h3>📈 Sales Trend</h3>
+    <canvas id="salesChart" width="400" height="200"></canvas>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script>
+  // Highlight the active page in the navbar
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".navbar a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
+  }
+
+</script>
+
+</body>
+</html>

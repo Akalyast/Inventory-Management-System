@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #007BFF;
+      color: white;
+    }
+    button {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c82333;
+    }
+    #saleSection {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💰 Sales Management</h1>
+
+  <table id="productTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="saleSection">
+    <h3>Record Sale for <span id="selectedProductName"></span></h3>
+    <input type="number" id="saleQuantity" placeholder="Enter quantity sold">
+    <button id="confirmSale">Record Sale</button>
+  </div>
+
+  <h2 style="margin-top:30px;">🧾 Sales History</h2>
+  <div style="text-align:right; margin-bottom:10px;">
+    <button onclick="exportSalesToCSV()">⬇️ Export Sales (CSV)</button>
+  </div>
+
+  <table id="salesTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Quantity Sold</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <a href="index.html">⬅ Back to Dashboard</a>
+  <script src="js/sales.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login | Inventory System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #007bff, #6f42c1);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    h2 {
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+      font-size: 1em;
+    }
+
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: #28a745;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .error {
+      color: #ffb3b3;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>🔐 Admin Login</h2>
+    <input type="text" id="username" placeholder="Enter Username" required />
+    <input type="password" id="password" placeholder="Enter Password" required />
+    <button onclick="login()">Login</button>
+    <p class="error" id="error-msg"></p>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === "admin" && password === "admin123") {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "index.html"; // redirect to dashboard
+      } else {
+        document.getElementById("error-msg").innerText = "Invalid username or password!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Management</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #007BFF;
+      color: white;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #218838;
+    }
+    #updateSection {
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📦 Stock Management</h1>
+
+  <table id="productTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="updateSection">
+    <h3>Update Stock for <span id="selectedProductName"></span></h3>
+    <input type="number" id="addQuantity" placeholder="Enter quantity to add">
+    <button id="confirmAdd">Add Stock</button>
+  </div>
+  <a href="index.html">⬅ Back to Dashboard</a>
+  <script src="js/stock.js"></script>
+</body>
+</html>
